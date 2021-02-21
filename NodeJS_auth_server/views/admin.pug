@@ -1,0 +1,45 @@
+
+html
+    head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Some description')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+    
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    title WeightTracker
+    body
+        main.wrapper
+            .box-container--home
+                .admin-panel-container
+                    h1 #[span.green-text.bold Admin]#[span.red.bold Page]
+                    button(onclick="logout()")#logoutBtn.btn.my__btn.btn--nav.btn--nav--logout.btn--admin Logout
+                table.table.table-striped.table--admin
+                    thead
+                        tr
+                        th(scope='col') Id
+                        th(scope='col') First Name
+                        th(scope='col') Last Name
+                        th(scope='col') Email
+                        th(scope='col') Role 
+                        th(scope='col') Action 
+                    tbody
+                    each user in users
+                        tr
+                        th(scope='row')=user._id
+                        td=user.Fname
+                        td=user.Lname
+                        td=user.email
+                        td=user.role
+                        td
+                            button(onclick=`deleteUser('${user._id}')`).btn.my__btn.red--btn Delete user
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js')
+    script(src="/js/login.js")
+    script(src="/js/microService.js")
+    script(src="/js/admin.js")

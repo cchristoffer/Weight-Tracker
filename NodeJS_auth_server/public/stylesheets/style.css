@@ -1,0 +1,547 @@
+:root {
+  --color-red: rgb(233, 141, 141);
+  --color-green: rgb(100, 206, 188);
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.auth__paragraph {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.loading {
+  margin-top: 2rem;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--color-green);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.center_div {
+  margin: 0 auto;
+}
+
+.data__row {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.form--small {
+  width: 6rem;
+}
+
+.d-none {
+  display: none;
+}
+
+.login-box {
+  width: 45%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.my__container {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -12rem;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://i.pinimg.com/originals/b8/7f/92/b87f92659e1b862ef0212086e6af7efc.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.my__btn {
+  transition: all 0.4s;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+  border-radius: 0;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.my__btn--login {
+  color: white;
+  background-color: var(--color-green);
+}
+
+.my__btn--register {
+  color: white;
+  background-color: var(--color-red);
+}
+
+.grow__btn {
+  flex-grow: 1;
+}
+
+.grow__btn:hover {
+  flex-grow: 1.5;
+  color: white;
+}
+.grow__btn:focus {
+  outline: none;
+  color: white;
+}
+
+.login__btn {
+  margin-top: 2rem;
+  width: 100%;
+  background-color: var(--color-green);
+  color: white;
+  border-radius: 3px;
+}
+.btn--modal--red:hover,
+.login__btn:hover {
+  color: white;
+}
+
+.btn--modal--red:focus,
+.login__btn:focus {
+  color: white;
+  outline: none;
+}
+
+.btn--modal--red {
+  color: white;
+  background-color: var(--color-red);
+  width: 40%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 2rem;
+}
+
+.box-container {
+  width: 45%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.box-container--home {
+  width: 70%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  text-align: center;
+  border-radius: 3px;
+  height: 80vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.form-margin {
+  margin-top: 6rem;
+  margin-bottom: 12rem;
+  text-align: start;
+}
+
+.w-100 {
+  width: 65%;
+}
+
+.primary__header {
+  font-weight: bold;
+  color: var(--color-green);
+}
+
+.mt-4 {
+  margin-top: 4rem !important;
+}
+
+.red {
+  color: var(--color-red);
+}
+
+.red--btn {
+  color: white;
+  background-color: var(--color-red);
+  flex-grow: 1;
+}
+
+.red--btn:hover {
+  color: white;
+  background-color: var(--color-red);
+  flex-grow: 2;
+}
+
+.red--btn:focus {
+  color: white;
+  background-color: var(--color-red);
+}
+
+.green-text {
+  color: var(--color-green);
+}
+
+.admin-panel-container {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.table--admin {
+  width: 70%;
+}
+
+.btn--admin {
+  flex-grow: 0 !important;
+  height: 50%;
+}
+
+.primary__paragraph--red {
+  color: var(--color-red);
+  font-weight: bold;
+  margin: 2rem 0rem;
+  cursor: pointer;
+}
+
+.btn--home {
+  color: var(--color-green);
+}
+
+.btn--nav {
+  flex-grow: 1;
+}
+
+.btn--nav:hover {
+  flex-grow: 1.5;
+  color: white;
+  background-color: var(--color-green);
+}
+
+.btn--nav--logout:hover {
+  flex-grow: 1.5;
+  color: white;
+  background-color: var(--color-red);
+}
+
+.btn--nav:focus {
+  flex-grow: 1.5;
+  color: white;
+  background-color: var(--color-green);
+  outline: none;
+}
+
+.goal-weight-container {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.green {
+  color: white;
+  background-color: var(--color-green);
+}
+
+.green:hover {
+  color: white;
+}
+.green:focus {
+  color: white;
+  outline: none;
+}
+
+.form-group-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 40%;
+}
+
+.form-group-container--ta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.loggedincontainer {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.home-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.text-container {
+  width: 70%;
+  margin: 2rem;
+}
+
+.primary--paragraph {
+  margin: 1rem 2rem;
+  font-size: 1.6rem;
+}
+
+.pb-10 {
+  padding-bottom: 10rem;
+}
+
+#dailyWeight,
+#setWeights,
+#weightUpdator,
+#updateAccount {
+  width: 75%;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dailyWeight,
+#setWeights,
+#weightUpdator,
+#updateAccount {
+  position: absolute;
+  top: 3rem;
+}
+#closeNavBtn {
+  display: none;
+}
+
+.plot-container {
+  height: 40vh;
+  width: 60%;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plot__img {
+  max-height: 100%;
+  max-width: 100%;
+  display: none;
+}
+
+.plot__img--home {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.padder {
+  padding: 5rem;
+}
+
+.updateform {
+  width: 60%;
+}
+
+.mt-2 {
+  margin: 2rem;
+  width: 60%;
+}
+
+.userdeleterow {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.active {
+  color: white;
+  background-color: var(--color-green);
+  flex-grow: 1.5;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bars__btn {
+  display: none;
+  top: 2%;
+  left: 2%;
+  z-index: 1000;
+  height: 7rem;
+  width: 100%;
+  top: 1%;
+  left: 1%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1450px) {
+  .box-container {
+    width: 75%;
+  }
+  .login-box {
+    width: 75%;
+  }
+  .modal-content {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1016px) {
+  .data__row {
+    width: 90%;
+  }
+
+  .box-container--home {
+    width: 90%;
+  }
+
+  .modal-content {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .data__row {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .box-container--home {
+    width: 100%;
+    height: 100%;
+  }
+  .btn--nav {
+    height: 7rem;
+    width: 100%;
+  }
+  #dailyWeight,
+  #setWeights,
+  #weightUpdator,
+  #updateAccount {
+    width: 100%;
+  }
+  .btn--nav {
+    display: none;
+  }
+  .bars__btn {
+    display: block;
+  }
+  .form-group-container--ta {
+    width: 100%;
+  }
+  .form-group-container {
+    width: 70%;
+  }
+  .form-control {
+    width: 90% !important;
+    height: 20%;
+  }
+  .userdeleterow {
+    width: 70%;
+    flex-wrap: wrap;
+  }
+  .red--btn {
+    margin: 2rem;
+  }
+  .form--small {
+    width: 20% !important;
+  }
+  .box-container {
+    width: 90%;
+    min-height: 70vh;
+  }
+  .login-box {
+    width: 90%;
+  }
+  .my__container {
+    width: 100%;
+    margin-top: 1px;
+  }
+  .plot-container {
+    width: 98%;
+  }
+  .btn--modal--red {
+    width: 80%;
+  }
+  .table--admin {
+    width: 50%;
+  }
+}

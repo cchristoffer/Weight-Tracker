@@ -1,0 +1,135 @@
+
+html
+    head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Some description')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+    
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    title WeightTracker
+    body
+    main.wrapper
+        #deleteUserModal.modal
+            .modal-content
+                a(onclick="closeModal('deleteUserModal')") #[span.close &times;]
+                h4.primary__header Delete  #[span.red Account?]  
+                p.primary__paragraph.mt-4 Are you sure you want to delete your account? If you do this it will not be recoverable.
+                button(onclick="closeModal('deleteUserModal')").btn.my__btn.btn--modal--red.green No, don't delete
+                button(onclick="deleteMe(); closeModal('deleteUserModal')").btn.my__btn.btn--modal--red Yes, delete my account
+        #areYouSure.modal
+            .modal-content
+                a(onclick="closeModal('areYouSure')") #[span.close &times;]
+                h4.primary__header Delete  #[span.red WeightData?]  
+                p.primary__paragraph.mt-4 Are you sure you want to delete your weight data? If you do this it will not be recoverable.
+                button(onclick="closeModal('areYouSure')").btn.my__btn.btn--modal--red.green No, don't delete
+                button(onclick="deleteWeightData(); closeModal('areYouSure')").btn.my__btn.btn--modal--red Yes, delete my data
+
+
+        #navBtns.row.data__row
+            button(onclick="showNav()")#showNavBtn.btn.my__btn.bars__btn #[i.fa.fa-bars.fa-2x]
+            button(onclick="closeNav()")#closeNavBtn.btn.my__btn.bars__btn #[i.fa.fa-window-close.fa-2x]
+            button(onclick="homeFunction()")#homeBtn.btn.my__btn.btn--nav.active About
+            button(onclick="dailyFunction()")#dailyBtn.btn.my__btn.btn--nav Analyse/Daily
+            button(onclick="setFunction()")#setBtn.btn.my__btn.btn--nav Add weight dataset
+            button(onclick="updateFunction()")#updateBtn.btn.my__btn.btn--nav Update Weights
+            button(onclick="userUpdateFunction()")#userUpdateBtn.btn.my__btn.btn--nav User settings
+            button(onclick="logout()")#logoutBtn.btn.my__btn.btn--nav.btn--nav--logout Logout
+        .box-container--home
+                .loggedincontainer
+                    p=h1
+                    p=updatedAt
+
+                #home.home-container
+                    h1 Welcome to #[span.green-text.bold Weight]#[span.red.bold Tracker]
+                    .text-container
+                        img.plot__img--home(src="https://i.imgur.com/XIctRjX.png")
+                        p.primary--paragraph This service was made in order to help me track my weight during a diet. At the same time, i was learning python and machine learning in school which inspired me to set up a python Flask server as a microservice that calulcates coefficients, days left until goal and generates plots of the linear regression model.
+                    h3 How to get started
+                    .text-container
+                        p.primary--paragraph If this is the first day you're tracking weight, you can enter your daily weight and your weight goal by clicking the button "Add Daily Weight" in the navigation. If you have tracked your weight for multiple days before using this service, please click "Add weight dataset" and write your weights in separated by commas, ex. 101, 100.7, 100.5 etc..
+                    h3 Updating weight or user data
+                    .text-container
+                        p.primary--paragraph If you made a typo or need to update your weight data, please click "Update Weights" where you can adjust any of your weight data. If you want to update personal information or password, please enter the User Settings Tab.
+                    h3 Analysing your weight data
+                    .text-container.pb-10
+                        p.primary--paragraph By clicking the "analyse button", you will get a plot generated from a linear regression model and a coefficient (the daily differences in weight), which enables to server to calculate how many days it will take before you reach your goal weight if you continue on the same track.
+
+                #dailyWeight.d-none
+                    h1.primary__header.mt-4 Weight#[span.red Tracker]
+                    p.primary--paragraph Enter your goal Weight here!
+                    .form-group-container
+                        label.form__label(for='goal') Goal Weight
+                        input#goal.form-control.form--small(type="text", placeholder=goalWeight)
+                        button(onclick="updateGoalWeights()")#userBtn.btn.my__btn.green Submit
+
+                    p.primary--paragraph Enter your daily Weight here!
+                    .form-group-container
+                        label.form__label(for='todaysWeight') Todays weight
+                        input#todaysWeight.form-control.form--small(type="text")
+                        button(onclick="addWeight()").btn.my__btn.green Submit
+                    p.primary--paragraph.green-text#successAdded=""
+                    p#instructions="Click button get your data analysed!" 
+                    p#coef=""
+                    p.primary--paragraph.red#daysLeft=""
+                    .plot-container
+                        button(onclick="regressionData()")#regressBtn.btn.my__btn.green.regress__btn Analyse
+                        img.plot__img#plt(src="")  
+                    .padder                 
+                        
+
+                #setWeights.d-none
+                    h1.primary__header.mt-4 Weight#[span.red Tracker]
+                    .form-group-container--ta.mt-4
+                        label.form__label(for='weightData') Add Weight Dataset
+                        textarea(rows="4")#addWeightData.form-control
+                        p.primary--paragraph="Add weights, separated by commas. (101.5, 102.2, 99)"
+                    button(onclick="addWeights()").btn.my__btn.green.mt-4 Submit
+                    p.primary--paragraph.green-text#successAddedSetWeights=""
+
+                #weightUpdator.d-none
+                    h1.primary__header.mt-4 Weight#[span.red Tracker]
+                    .form-group-container--ta.mt-4
+                        label.form__label(for='weightData') Update Weight Data
+                        textarea(rows="4")#weightData.form-control=weights
+                        p.primary--paragraph="Change any weights and hit update"
+                    button(onclick="updateWeights()").btn.my__btn.green.mt-4 Submit
+                    p.primary--paragraph.green-text#successUpdatedWeights=""
+                    
+
+
+                #updateAccount.d-none
+                    h1.primary__header.mt-4 Weight#[span.red Tracker]
+                    .form-group-container--ta.mt-4
+                        label.form__label(for='fname') First name
+                        input#fname.form-control.updateform(type="text" value=fname)
+                        label.form__label(for='lname') Last name
+                        input#lname.form-control.updateform(type="text" value=lname)  
+                        button(onclick="updateUserInfo()").btn.my__btn.green.mt-2 Update name
+
+                        label.form__label(for='passwordCurrent') Current Password
+                        input#passwordCurrent.form-control.updateform(type="password" placeholder="***************")
+                        label.form__label(for='password') New Password
+                        input#password.form-control.updateform(type="password" placeholder="***************")  
+                        label.form__label.updateform(for='confirmpasswordConfirm') Confirm Password
+                        input#passwordConfirm.form-control.updateform(type="password" placeholder="***************") 
+                        button(onclick="updatePassword()").btn.my__btn.green.mt-2 Update Password
+
+                        .row.userdeleterow
+                            button(onclick="showModal('deleteUserModal')").btn.red--btn.my__btn Delete Account
+                            button(onclick="showModal('areYouSure')").btn.red--btn.my__btn Delete Weight Data
+
+
+                
+
+
+
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js')
+    script(src="/js/login.js")
+    script(src="/js/microService.js")

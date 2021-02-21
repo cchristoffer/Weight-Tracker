@@ -1,0 +1,88 @@
+
+html
+    head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Some description')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+    
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    title Login
+    body
+    main.wrapper 
+        .my__container
+            #forgotPwModal.modal
+                .modal-content
+                    a(onclick="closeModal('forgotPwModal')") #[span.close &times;]
+                    h4.primary__header Forgot #[span.red Password]  
+                    p.primary__paragraph.mt-4 Sorry! The email service for forgotten passwords is not yet implemented...
+                    button(onclick="closeModal('forgotPwModal')").btn.my__btn.btn--modal--red Close
+
+            #thanksModal.modal
+                .modal-content
+                    a(onclick="closeModal('thanksModal')") #[span.close &times;]
+                    h4.primary__header Registration  #[span.red successful!]  
+                    p.primary__paragraph.mt-4 Welcome to WeightTrackers! Please log in to get started.
+                    button(onclick="closeModal('thanksModal')").btn.my__btn.btn--modal--red Close
+
+            #aboutModal.modal
+                .modal-content
+                    a(onclick="closeModal('aboutModal')") #[span.close &times;]
+                    h4.primary__header About #[span.red WeightTracker]  
+                    p.primary__paragraph.mt-4 This is a web service to track your weight and get daily plots & coefficients from a SKLearn linear regression model. Using the coefficient and previous data the python flask microservice will also calculate how many days are left until you've reached your weight goals!
+                    button(onclick="closeModal('aboutModal')").btn.my__btn.btn--modal--red Close
+            .login-box
+                button(onclick="viewLogin()").btn.my__btn.grow__btn.my__btn--login Login
+                button(onclick="viewRegister()").btn.my__btn.grow__btn.my__btn--register Register
+            .box-container
+                #loginBox.w-100
+                    h1.primary__header.mt-4 Weight#[span.red Tracker]
+                    #loadingBox.d-none
+                        .loading
+                        p.auth__paragraph Authenticating...
+                    #loadingBoxErrorMsg.d-none
+                        p.primary__paragraph--red Wrong email or password, please try again...
+                    form.form-margin.form--login
+                        .form-group
+                            label.form__label(for='email') Email address
+                            input#email.form-control(type='email', placeholder='you@example.com', required)
+                        .form-group
+                            label.form__label(for='password') Password
+                            input#password.form-control(type='password', placeholder='••••••••', required, minlength='8')
+                        .form__group
+                            button#loginBtn.btn.my__btn.login__btn Login
+                            a.primary__paragraph--red(type="button" onclick="showModal('forgotPwModal')") Forgot password?
+
+                #registerBox.w-100.d-none
+                    h1.primary__header.mt-4 Regi#[span.red ster]
+                    form.form-margin.form--login
+                        .form-group
+                            label.form__label(for='fname') First Name
+                            input#fname.form-control(type='text', required)
+                        .form-group
+                            label.form__label(for='lname') Last Name
+                            input#lname.form-control(type='text', required)
+                        .form-group
+                            label.form__label(for='registerEmail') Email address
+                            input#registerEmail.form-control(type='email', required)
+                        .form-group
+                            label.form__label(for='newPassword') Password
+                            input#newPassword.form-control(type='password', required, minlength='8')
+                        .form-group
+                            label.form__label(for='newPasswordConfirm') Confirm Password
+                            input#newPasswordConfirm.form-control(type='password', required, minlength='8')
+                            button(onclick="signUp()").btn.my__btn.login__btn Register
+                            a.primary__paragraph--red(type="button" onclick="showModal('aboutModal')") About WeightTracker
+
+
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js')
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+    script(src="/js/login.js")
+
